@@ -12,7 +12,13 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        //get all posts
+        $reviews = Review::latest()->get();
+
+        //return view
+        return inertia('Reviews/Index', [
+            'reviews' => $reviews
+        ]);
     }
 
     /**

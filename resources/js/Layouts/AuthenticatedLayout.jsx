@@ -31,8 +31,8 @@ export default function AuthenticatedLayout({ header, children }) {
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
+                                    href={route('products.index')}
+                                    active={route().current('products.index')}
                                 >
                                     Tambah Produk
                                 </NavLink>
@@ -147,8 +147,8 @@ export default function AuthenticatedLayout({ header, children }) {
                             Dashboard
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            href={route('dashboard')}
-                            active={route().current('dashboard')}
+                            href={route('products.index')}
+                            active={route().current('products.index')}
                         >
                             Tambah Produk
                         </ResponsiveNavLink>
