@@ -12,7 +12,16 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        //get all posts
+        $products = Product::latest()->get()->map(function ($product) {
+            $product->image = asset('images/' . $product->image); 
+            return $product;
+        });
+
+        //return view
+        return inertia('Products/Index', [
+            'products' => $products
+        ]);
     }
 
     /**
@@ -20,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Products/Create');
     }
 
     /**
@@ -28,7 +37,36 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category' => 'required',
+            'min' => 'required',
+            'price' => 'required',
+            'address' => 'required',
+            'kelurahan' => 'required',
+            'kecamatan' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(public_path('images'), $filename);
+
+        Product::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'image' => $filename,
+            'category' => $request->input('category'),
+            'min' => $request->input('min'),
+            'price' => $request->input('price'),
+            'address' => $request->input('address'),
+            'kelurahan' => $request->input('kelurahan'),
+            'kecamatan' => $request->input('kecamatan'),
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return redirect()->route('products.index')->with('success', 'Product berhasil ditambahkan.');
     }
 
     /**
