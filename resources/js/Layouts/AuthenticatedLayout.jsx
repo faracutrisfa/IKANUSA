@@ -36,12 +36,6 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Tambah Produk
                                 </NavLink>
-                                <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
-                                >
-                                    Ulasan
-                                </NavLink>
                             </div>
                         </div>
 
@@ -151,12 +145,6 @@ export default function AuthenticatedLayout({ header, children }) {
                             active={route().current('products.index')}
                         >
                             Tambah Produk
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            href={route('dashboard')}
-                            active={route().current('dashboard')}
-                        >
-                            Ulasan
                         </ResponsiveNavLink>
                     </div>
 
