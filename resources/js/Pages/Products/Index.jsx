@@ -20,7 +20,7 @@ export default function Index({ products, auth }) {
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                <h2 className="text-xl font-semibold leading-tight text-darker-blue">
                     Tambah Produk
                 </h2>
             }
@@ -28,25 +28,25 @@ export default function Index({ products, auth }) {
             <Head title="Dashboard" />
 
             <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div className="max-w-[1320px] mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                         <div className="p-6 bg-gray-100 border-b border-gray-200">
-                            <h3 className="text-2xl font-bold text-gray-800 mb-4">Tambah Produk</h3>
+                            <h3 className="text-2xl font-bold text-darker-blue mb-4">Tambah Produk</h3>
 
                             <div className="overflow-x-auto">
                                 <table className="min-w-full divide-y divide-gray-300 bg-white rounded-lg shadow table-auto">
                                     <thead>
-                                        <tr>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Nama</th>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Deskripsi</th>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Image</th>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">category</th>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">min</th>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">price</th>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">address</th>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">kelurahan</th>
-                                            <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">kecamatan</th>
-                                            {/* <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Action</th> */}
+                                        <tr className='text-left text-xs font-medium text-darker-blue tracking-wider'>
+                                            <th className="px-4 py-3">NAMA</th>
+                                            <th className="px-4 py-3">DESKRIPSI</th>
+                                            <th className="px-4 py-3">GAMBAR</th>
+                                            <th className="px-4 py-3">KATEGORI</th>
+                                            <th className="px-4 py-3">MINIMAL ORDER</th>
+                                            <th className="px-4 py-3">HARGA</th>
+                                            <th className="px-4 py-3">ALAMAT</th>
+                                            <th className="px-4 py-3">KELURAHAN</th>
+                                            <th className="px-4 py-3">KECAMATAN</th>
+                                            <th className="px-4 py-3">ACTION</th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
