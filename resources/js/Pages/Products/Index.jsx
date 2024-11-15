@@ -63,7 +63,7 @@ export default function Index({ products, auth }) {
                                                 <td className="px-4 py-2 whitespace-nowrap text-sm">{product.address}</td>
                                                 <td className="px-4 py-2 whitespace-nowrap text-sm">{product.kelurahan}</td>
                                                 <td className="px-4 py-2 whitespace-nowrap text-sm">{product.kecamatan}</td>
-                                                {/* <td className="px-4 py-2 whitespace-nowrap text-sm flex space-x-2">
+                                                <td className="px-4 py-2 whitespace-nowrap text-sm flex space-x-2">
                                                     
                                                     <Link
                                                         href={route('products.edit', product.id)}
@@ -73,13 +73,13 @@ export default function Index({ products, auth }) {
                                                     </Link>
 
                                                    
-                                                    <button
+                                                    {/* <button
                                                         onClick={() => handleDelete(product.id)}
                                                         className="border border-red-600 text-red-600 px-4 py-2 rounded-lg shadow transition-colors duration-300 ease-in-out hover:bg-red-600 hover:text-white text-sm"
                                                     >
                                                         Delete
-                                                    </button>
-                                                </td> */}
+                                                    </button> */}
+                                                </td>
                                             </tr>
                                         ))}
                                     </tbody>
