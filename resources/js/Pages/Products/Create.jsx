@@ -1,5 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm } from '@inertiajs/react';
+import PrimaryButton from '@/Components/PrimaryButton';
+import TextInput from '@/Components/TextInput';
 
 export default function Create({ auth }) {
     const { data, setData, post, errors } = useForm({
@@ -17,7 +19,7 @@ export default function Create({ auth }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data); // Debug data yang akan dikirim
+        console.log(data);
         post(route('products.store'), {
             onSuccess: () => reset({
                 name: '',
@@ -37,129 +39,124 @@ export default function Create({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Tambah Produk</h2>}
+            header={<h2 className="font-semibold text-xl text-darker-blue leading-tight">Tambah Produk</h2>}
         >
             <Head title="Tambah Produk" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <div className="p-6 bg-gray-100 border-b border-gray-200">
+                    <div className="shadow-lg bg-white rounded-lg overflow-hidden">
+                        <div className="p-6 border-b border-gray-200">
                             <form onSubmit={handleSubmit}>
-                                {/* Name Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Name</label>
-                                    <input
+                                    <label className="block text-sm font-medium text-darker-blue">Nama</label>
+                                    <TextInput
                                         type="text"
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                         value={data.name}
                                         onChange={(e) => setData('name', e.target.value)}
+                                        className="block w-full "
                                         required
                                     />
                                     {errors.name && <div className="text-red-500 text-xs mt-1">{errors.name}</div>}
                                 </div>
 
-                                {/* Description Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Description</label>
-                                    <textarea
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                    <label className="block text-sm font-medium text-darker-blue">Deskripsi</label>
+                                    <TextInput
+                                        as="textarea"
                                         value={data.description}
                                         onChange={(e) => setData('description', e.target.value)}
+                                        className="block w-full"
                                         required
                                     />
                                     {errors.description && <div className="text-red-500 text-xs mt-1">{errors.description}</div>}
                                 </div>
 
-                                {/* Image Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Image</label>
-                                    <input
+                                    <label className="block text-sm font-medium text-darker-blue">Gambar</label>
+                                    <TextInput
                                         type="file"
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                         onChange={(e) => setData('image', e.target.files[0])}
+                                        className="mt-1 block w-full py-2 pl-2 border border-gray-300 shadow-sm"
                                     />
                                     {errors.image && <div className="text-red-500 text-xs mt-1">{errors.image}</div>}
                                 </div>
 
-                                {/* Category Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Category</label>
-                                    <textarea
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                    <label className="block text-sm font-medium text-darker-blue">Kategori</label>
+                                    <select
                                         value={data.category}
                                         onChange={(e) => setData('category', e.target.value)}
+                                        className="rounded-md mt-1 block w-full border border-gray-300 shadow-sm"
                                         required
-                                    />
+                                    >
+                                        <option value="">Pilih Kategori</option>
+                                        <option value="laut">laut</option>
+                                        <option value="tawar">tawar</option>
+                                    </select>
                                     {errors.category && <div className="text-red-500 text-xs mt-1">{errors.category}</div>}
                                 </div>
 
-                                {/* Min Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Min</label>
-                                    <input
+                                    <label className="block text-sm font-medium text-darker-blue">Minimal Order</label>
+                                    <TextInput
                                         type="number"
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                         value={data.min}
                                         onChange={(e) => setData('min', e.target.value)}
+                                        className="mt-1 block w-full"
                                     />
                                     {errors.min && <div className="text-red-500 text-xs mt-1">{errors.min}</div>}
                                 </div>
 
-                                {/* Price Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Price</label>
-                                    <input
+                                    <label className="block text-sm font-medium text-darker-blue">Harga</label>
+                                    <TextInput
                                         type="number"
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                         value={data.price}
                                         onChange={(e) => setData('price', e.target.value)}
+                                        className="mt-1 block w-full"
                                         required
                                     />
                                     {errors.price && <div className="text-red-500 text-xs mt-1">{errors.price}</div>}
                                 </div>
 
-                                {/* Address Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Address</label>
-                                    <input
+                                    <label className="block text-sm font-medium text-darker-blue">Alamat Lengkap</label>
+                                    <TextInput
                                         type="text"
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                         value={data.address}
                                         onChange={(e) => setData('address', e.target.value)}
+                                        className="mt-1 block w-full"
                                         required
                                     />
                                     {errors.address && <div className="text-red-500 text-xs mt-1">{errors.address}</div>}
                                 </div>
 
-                                {/* Kelurahan Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Kelurahan</label>
-                                    <input
+                                    <label className="block text-sm font-medium text-darker-blue">Kelurahan</label>
+                                    <TextInput
                                         type="text"
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                         value={data.kelurahan}
                                         onChange={(e) => setData('kelurahan', e.target.value)}
+                                        className="mt-1 block w-full"
                                     />
                                     {errors.kelurahan && <div className="text-red-500 text-xs mt-1">{errors.kelurahan}</div>}
                                 </div>
 
-                                {/* Kecamatan Field */}
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Kecamatan</label>
-                                    <input
+                                    <label className="block text-sm font-medium text-darker-blue">Kecamatan</label>
+                                    <TextInput
                                         type="text"
-                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                                         value={data.kecamatan}
                                         onChange={(e) => setData('kecamatan', e.target.value)}
+                                        className="mt-1 block w-full"
                                     />
                                     {errors.kecamatan && <div className="text-red-500 text-xs mt-1">{errors.kecamatan}</div>}
                                 </div>
 
-                                {/* Submit Button */}
-                                <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                <PrimaryButton type="submit" className="mt-4">
                                     Simpan
-                                </button>
+                                </PrimaryButton>
                             </form>
                         </div>
                     </div>
