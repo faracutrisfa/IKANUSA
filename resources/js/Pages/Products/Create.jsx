@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import ConfirmationPopup from '@/Components/ConfirmationPopup';  // Import the reusable component
 
 export default function Create({ auth }) {
-    const { data, setData, post, errors } = useForm({
+    const { data, setData, post, errors, reset } = useForm({
         name: '',
         description: '',
         image: null,
@@ -17,23 +19,35 @@ export default function Create({ auth }) {
         user_id: auth.user.id,
     });
 
+    const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data);
+        setShowPopup(true); // Show the popup when the form is submitted
+    };
+
+    const handleCreateProduct = () => {
         post(route('products.store'), {
-            onSuccess: () => reset({
-                name: '',
-                description: '',
-                image: null,
-                category: '',
-                min: '',
-                price: '',
-                address: '',
-                kelurahan: '',
-                kecamatan: '',
-                user_id: auth.user.id,
-            }),
+            onSuccess: () => {
+                reset({
+                    name: '',
+                    description: '',
+                    image: null,
+                    category: '',
+                    min: '',
+                    price: '',
+                    address: '',
+                    kelurahan: '',
+                    kecamatan: '',
+                    user_id: auth.user.id,
+                });
+                setShowPopup(false); // Close the popup and reset the form after successful submission
+            },
         });
+    };
+
+    const handleCancel = () => {
+        setShowPopup(false); // Close the popup without submitting
     };
 
     return (
@@ -54,7 +68,7 @@ export default function Create({ auth }) {
                                         type="text"
                                         value={data.name}
                                         onChange={(e) => setData('name', e.target.value)}
-                                        className="block w-full "
+                                        className="block w-full"
                                         required
                                     />
                                     {errors.name && <div className="text-red-500 text-xs mt-1">{errors.name}</div>}
@@ -91,8 +105,8 @@ export default function Create({ auth }) {
                                         required
                                     >
                                         <option value="">Pilih Kategori</option>
-                                        <option value="laut">laut</option>
-                                        <option value="tawar">tawar</option>
+                                        <option value="laut">Laut</option>
+                                        <option value="tawar">Tawar</option>
                                     </select>
                                     {errors.category && <div className="text-red-500 text-xs mt-1">{errors.category}</div>}
                                 </div>
@@ -162,6 +176,15 @@ export default function Create({ auth }) {
                     </div>
                 </div>
             </div>
+
+            {/* Using the ConfirmationPopup component */}
+            {showPopup && (
+                <ConfirmationPopup
+                    message="Apakah kamu yakin ingin menambah produk ini?"
+                    onConfirm={handleCreateProduct}
+                    onCancel={handleCancel}
+                />
+            )}
         </AuthenticatedLayout>
     );
 }
