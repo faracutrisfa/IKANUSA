@@ -28,22 +28,25 @@ return [
     | - 'buyer' for pembeli (buyer)
     */
 
-    'guards' => [
+   'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
 
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'users', // Model User untuk admin
-        ],
-
         'buyer' => [
             'driver' => 'session',
-            'provider' => 'buyers', // Model Buyer untuk pembeli
+            'provider' => 'buyers', 
         ],
     ],
+
+    'providers' => [
+        'buyers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Buyer::class, 
+        ],
+    ],
+
 
     /*
     |---------------------------------------------------------------------------

@@ -5,23 +5,27 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BuyerAuthController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+//buyers
+Route::get('/', function () {
+    return Inertia::render('Welcome');
+})->name('welcome');
+
+Route::middleware('guest')->group(function () {
+    Route::get('loginBuyer', [BuyerAuthController::class, 'showLoginForm'])->name('loginBuyer');
+    Route::post('loginBuyer', [BuyerAuthController::class, 'login']);
+    Route::get('registerBuyer', [BuyerAuthController::class, 'showRegisterForm'])->name('registerBuyer');
+    Route::post('registerBuyer', [BuyerAuthController::class, 'registerBuyer']);
+});
 
 // Route dashboard
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'), 
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

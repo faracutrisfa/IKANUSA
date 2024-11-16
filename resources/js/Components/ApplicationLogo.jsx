@@ -2,7 +2,7 @@ import { Link } from "@inertiajs/react";
 
 export default function ApplicationLogo(props) {
     return (
-        <Link  href={route('home')}>
+        <Link  href={route('welcome')}>
             <img {...props}
                 src="/IkaNusaLogo.webp"
                 alt="Logo"
