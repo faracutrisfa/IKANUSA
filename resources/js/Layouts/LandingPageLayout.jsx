@@ -4,7 +4,7 @@ import React from 'react'
 
 const LandingPageLayout = ({ children }) => {
     return (
-        <div>
+        <div className='font-poppins'>
             <Navbar />
             <div className='pt-20'>
                 {children}
