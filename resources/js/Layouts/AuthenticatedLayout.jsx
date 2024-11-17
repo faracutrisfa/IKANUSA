@@ -27,12 +27,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                 <NavLink
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
+                                    className='font-medium'
                                 >
                                     Dashboard
                                 </NavLink>
                                 <NavLink
                                     href={route('products.index')}
                                     active={route().current('products.index')}
+                                    className='font-medium'
                                 >
                                     Tambah Produk
                                 </NavLink>
