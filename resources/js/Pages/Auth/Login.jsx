@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { Head, useForm } from '@inertiajs/react';
+import InputLabel from '@/Components/InputLabel';
+import PrimaryButton from '@/Components/PrimaryButton';
+import TextInput from '@/Components/TextInput';
+import GuestLayout from '@/Layouts/GuestLayout';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function Login() {
   const [errors, setErrors] = useState([]);
@@ -23,61 +28,71 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <section className='font-poppins'>
       <Head title="Log in" />
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login Pembeli</h2>
+      <div className='flex'>
+        <div className='w-8/12 bg-light-blue-active container'>
+          <GuestLayout>
+            <div className='max-w-md'>
+              <ApplicationLogo />
+              <h2 className='text-5xl mt-5 animate-fade-right'>Selamat datang!</h2>
+              <div>
+                {errors.message && (
+                  <div className="mb-4 text-red-500 text-center mt-2">{errors.message}</div>
+                )}
 
-        {errors.message && (
-          <div className="mb-4 text-red-500 text-center">{errors.message}</div>
-        )}
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-4 mt-5">
+                    <InputLabel htmlFor="email" value="Email" />
+                    <TextInput
+                      id="email"
+                      type="email"
+                      value={data.email}
+                      onChange={(e) => setData('email', e.target.value)}
+                      className="mt-1 block w-full bg-normal-blue-hover"
+                      required
+                    />
+                    {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+                  </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={data.email}
-              onChange={(e) => setData('email', e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
-            />
-            {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
-          </div>
+                  <div className="mb-6">
+                    <InputLabel htmlFor="password" value="Password" />
+                    <TextInput
+                      id="password"
+                      type="password"
+                      value={data.password}
+                      onChange={(e) => setData('password', e.target.value)}
+                      className="mt-1 block w-full bg-normal-blue-hover"
+                      required
+                    />
+                    {errors.password && <p className="text-red-500 text-xs">{errors.password}</p>}
+                  </div>
 
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={data.password}
-              onChange={(e) => setData('password', e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
-            />
-            {errors.password && <p className="text-red-500 text-xs">{errors.password}</p>}
-          </div>
+                  <div className="flex justify-center mb-4">
+                    <PrimaryButton
+                      type="submit"
+                      disabled={processing}
+                      className="py-2 px-9 rounded-lg"
+                    >
+                      {processing ? 'Logging in...' : 'Masuk'}
+                    </PrimaryButton>
+                  </div>
+                </form>
 
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-indigo-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
-            disabled={processing}
-          >
-            {processing ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
-
-        <div className="mt-4 text-center">
-          <a href="/registerBuyer" className="text-indigo-600 hover:text-indigo-800">
-            Belum punya akun? Daftar di sini
-          </a>
+                <div className="mt-4 text-center">
+                  <a href="/registerBuyer" className="text-darker-blue">
+                    Belum punya akun? <span className='font-bold'>Daftar</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </GuestLayout>
+        </div>
+        <div className='w-4/12'>
+          <img src="./build/assets/authPage/HeroLogin.webp" />
         </div>
       </div>
-    </div>
+    </section>
+
   );
 }
