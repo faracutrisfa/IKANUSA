@@ -55,7 +55,7 @@ export default function Index({ faqs, auth }) {
                                                 <td className="px-4 py-2 overflow-hidden text-ellipsis whitespace-normal">
                                                     {faq.answer}
                                                 </td>
-                                                <td className="px-4 py-2 space-x-2">
+                                                <td className="px-4 py-2 space-x-2 text-right">
                                                     <Link href={route('faqs.edit', faq.id)}>
                                                         <PrimaryButton className="border-2 bg-green-600 hover:border-green-600 text-green-600 hover:bg-transparent hover:text-green-600 focus:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 active:bg-green-600 active:text-white">
                                                             Edit
@@ -69,7 +69,6 @@ export default function Index({ faqs, auth }) {
                                                         Delete
                                                     </PrimaryButton>
                                                 </td>
-
                                             </tr>
                                         ))}
                                     </tbody>

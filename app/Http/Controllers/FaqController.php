@@ -21,11 +21,12 @@ class FaqController extends Controller
         return inertia('Faq/Create');
     }
 
-    public function store(Request $faq)
+    public function store(Request $request)
     {
         $request->validate([
             'question' => 'required',
-            'answer' => 'required'
+            'answer' => 'required',
+            'user_id' => 'required'
         ]);
 
         Faq::create([

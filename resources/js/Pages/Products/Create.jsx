@@ -3,7 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import ConfirmationPopup from '@/Components/ConfirmationPopup';  // Import the reusable component
+import ConfirmationPopup from '@/Components/ConfirmationPopup';  
 
 export default function Create({ auth }) {
     const { data, setData, post, errors, reset } = useForm({
@@ -19,11 +19,11 @@ export default function Create({ auth }) {
         user_id: auth.user.id,
     });
 
-    const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility
+    const [showPopup, setShowPopup] = useState(false); 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setShowPopup(true); // Show the popup when the form is submitted
+        setShowPopup(true); 
     };
 
     const handleCreateProduct = () => {
@@ -41,13 +41,13 @@ export default function Create({ auth }) {
                     kecamatan: '',
                     user_id: auth.user.id,
                 });
-                setShowPopup(false); // Close the popup and reset the form after successful submission
+                setShowPopup(false); 
             },
         });
     };
 
     const handleCancel = () => {
-        setShowPopup(false); // Close the popup without submitting
+        setShowPopup(false); 
     };
 
     return (
@@ -177,7 +177,6 @@ export default function Create({ auth }) {
                 </div>
             </div>
 
-            {/* Using the ConfirmationPopup component */}
             {showPopup && (
                 <ConfirmationPopup
                     message="Apakah kamu yakin ingin menambah produk ini?"
