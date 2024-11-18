@@ -97,7 +97,7 @@ export default function Navbar() {
                 <div className="hidden lg:flex gap-4 ">
                     <Link href="/loginBuyer">
                         <SecondaryButton className="font-bold bg-transparent text-white hover:bg-normal-blue-active">
-                            Sign Up
+                            Log In
                         </SecondaryButton>
                     </Link>
                     <Link href="/registerBuyer">
