@@ -6,7 +6,7 @@ const LandingPageLayout = ({ children }) => {
     return (
         <div className='font-poppins'>
             <Navbar />
-            <div className='pt-20'>
+            <div className='pt-[87px]'>
                 {children}
             </div>
             <Footer />

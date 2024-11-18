@@ -8,10 +8,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
         <section>
             <Head title="Welcome" />
             <LandingPageLayout>
-                <div className='bg-dark-blue-active lg:bg-gradient-to-b lg:from-[#0E538C] lg:to-[#DAF0F9] rounded-b-[50px] lg:rounded-none'>
-                    <Hero />
+                <div className='bg-light-blue-active'>
+                    <div className='bg-dark-blue-active lg:bg-gradient-to-b lg:from-[#0E538C] lg:to-[#DAF0F9] rounded-b-[50px] lg:rounded-none'>
+                        <Hero />
+                    </div>
+                    <Layanan />
                 </div>
-                <Layanan />
             </LandingPageLayout>
         </section>
     );
