@@ -31,7 +31,7 @@ export default function Login() {
     <section className='font-poppins'>
       <Head title="Log in" />
       <div className='flex'>
-        <div className='w-8/12 bg-light-blue-active container'>
+        <div className='w-8/12 items-center flex bg-light-blue-active container'>
           <GuestLayout>
             <div className='max-w-md'>
               <ApplicationLogo />
@@ -89,7 +89,7 @@ export default function Login() {
           </GuestLayout>
         </div>
         <div className='w-4/12'>
-          <img src="./build/assets/authPage/HeroLogin.webp" />
+          <img src="./build/assets/authPage/HeroLogin.webp" className=' h-screen w-full'/>
         </div>
       </div>
     </section>

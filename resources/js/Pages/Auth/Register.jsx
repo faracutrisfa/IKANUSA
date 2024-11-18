@@ -36,9 +36,9 @@ export default function Register() {
             <Head title="Register" />
             <div className='flex'>
                 <div className='w-4/12'>
-                    <img src="./build/assets/authPage/HeroRegister.webp" className='' />
+                    <img src="./build/assets/authPage/HeroRegister.webp" className='w-full h-screen' />
                 </div>
-                <div className='w-8/12 pl-28 bg-light-blue-active container'>
+                <div className='w-8/12 items-center flex pl-28 bg-light-blue-active container'>
                     <GuestLayout>
                         <div>
                             <ApplicationLogo />
