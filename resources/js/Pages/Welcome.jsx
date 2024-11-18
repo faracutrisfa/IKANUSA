@@ -2,6 +2,7 @@ import LandingPageLayout from '@/Layouts/LandingPageLayout';
 import { Head, Link } from '@inertiajs/react';
 import Hero from './LandingPage/Hero';
 import Layanan from './LandingPage/Layanan';
+import Info from './LandingPage/Info';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
@@ -13,6 +14,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <Hero />
                     </div>
                     <Layanan />
+                    <Info />
                 </div>
             </LandingPageLayout>
         </section>
