@@ -12,10 +12,10 @@ import { FaSquareThreads } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <section className='py-2'>
-            <div className='px-10 lg:px-14 xl:px-20 bg-cust-grey pb-5'>
+        <section className='pb-5'>
+            <div className='px-10 lg:px-14 xl:px-20 bg-cust-grey py-4'>
                 <ApplicationLogo />
-                <ul className='gap-5 mt-10 lg:mt-5 flex flex-col'>
+                <ul className='gap-5 mt-10 lg:mt-6 flex flex-col'>
                     <li className='flex items-center gap-2 lg:text-2xl'><HiOutlineLocationMarker />Jl. Raya Sawojajar No. 29, Kec. Kedungkandang, Kota Malang</li>
                     <li className='flex items-center gap-2 lg:text-2xl'><IoCallOutline />089667353733</li>
                     <li className='flex items-center gap-2 lg:text-2xl'><AiOutlineMail />IkaNusa123@gmail.com</li>

@@ -16,6 +16,22 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('welcome');
 
+Route::get('/produk', function () {
+    return Inertia::render('Produk');
+})->name('Produk');
+
+Route::get('/edukasi', function () {
+    return Inertia::render('Edukasi');
+})->name('Edukasi');
+
+Route::get('/layanan', function () {
+    return Inertia::render('Layanan');
+})->name('Layanan');
+
+Route::get('/faq', function () {
+    return Inertia::render('Faq');
+})->name('Faq');
+
 Route::middleware('guest')->group(function () {
     Route::get('loginBuyer', [BuyerAuthController::class, 'showLoginForm'])->name('loginBuyer');
     Route::post('loginBuyer', [BuyerAuthController::class, 'login']);
