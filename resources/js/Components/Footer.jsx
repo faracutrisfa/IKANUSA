@@ -34,7 +34,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <p className='bg-white w-full mt-12 justify-center items-center flex'>Copyright © 2024 PT IkaNusa | Powered by IkaNusa</p>
+            <p className='bg-white w-full mt-12 justify-center text-center flex'>Copyright © 2024 PT IkaNusa | Powered by IkaNusa</p>
         </section>
     )
 }
