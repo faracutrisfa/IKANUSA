@@ -3,6 +3,8 @@ import { Head, Link } from '@inertiajs/react';
 import Hero from './LandingPage/Hero';
 import Layanan from './LandingPage/Layanan';
 import Info from './LandingPage/Info';
+import RekomendasiProduk from './LandingPage/RekomendasiProduk';
+import Ulasan from './LandingPage/Ulasan';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
@@ -15,6 +17,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
                     <Layanan />
                     <Info />
+                    <RekomendasiProduk />
+                    <Ulasan />
                 </div>
             </LandingPageLayout>
         </section>
