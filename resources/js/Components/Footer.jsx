@@ -12,7 +12,7 @@ import { FaSquareThreads } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <section className='pt-14 py-2'>
+        <section className='py-2'>
             <div className='px-10 lg:px-14 xl:px-20 bg-cust-grey pb-5'>
                 <ApplicationLogo />
                 <ul className='gap-5 mt-10 lg:mt-5 flex flex-col'>
