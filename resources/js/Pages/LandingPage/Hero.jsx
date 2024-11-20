@@ -83,7 +83,7 @@ const Hero = () => {
                     </p>
                     <div className="flex gap-2 lg:gap-4">
                         <Link>
-                            <PrimaryButton className="bg-[#E2E6DF] rounded-xl lg:rounded-lg text-black lg:bg-dark-blue-active lg:text-white">
+                            <PrimaryButton className="bg-[#E2E6DF] border-white lg:border-transparent rounded-xl lg:rounded-lg text-black lg:bg-dark-blue-active lg:text-white">
                                 Beli Sekarang
                             </PrimaryButton>
                         </Link>

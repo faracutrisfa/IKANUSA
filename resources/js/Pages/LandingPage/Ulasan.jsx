@@ -43,7 +43,7 @@ const Ulasan = () => {
                                 <div className='flex justify-center -mb-10 lg:-mb-20 pt-20'>
                                     <img src={review.image} alt="image" className='rounded-full w-24 lg:w-44 z-10' />
                                 </div>
-                                <div className='bg-white rounded-t-2xl flex flex-col gap-2 px-5 py-14 lg:py-28 max-h-96'>
+                                <div className='bg-white rounded-t-2xl flex flex-col gap-2 px-5 py-14 lg:py-28 min-h-80 md:min-h-80 lg:max-h-[450px] xl:max-h-96'>
                                     <h3 className='text-dark-blue-active text-xl lg:text-3xl font-bold text-center'>
                                         {review.name}
                                     </h3>
