@@ -24,29 +24,29 @@ const Hero = () => {
         windowWidth >= 1024
             ? {
                   backgroundImage: `
-                      url('./build/assets/LandingPage/ikan1.webp'),
-                      url('./build/assets/LandingPage/ikan2.webp'),
-                      url('./build/assets/LandingPage/ikan3.webp'),
-                      url('./build/assets/LandingPage/ikan4.webp')
+                      url('./assets/LandingPage/ikan1.webp'),
+                      url('./assets/LandingPage/ikan2.webp'),
+                      url('./assets/LandingPage/ikan3.webp'),
+                      url('./assets/LandingPage/ikan4.webp')
                   `,
                   backgroundPosition: 'top left, top right, bottom left, bottom right',
                   backgroundSize: '10%, 10%, 10%, 10%',
                   backgroundRepeat: 'no-repeat',
               }
             : {
-                  backgroundImage: `url('./build/assets/LandingPage/ikan3.webp')`,
+                  backgroundImage: `url('./assets/LandingPage/ikan3.webp')`,
                   backgroundPosition: 'top right',
                   backgroundSize: '20%',
                   backgroundRepeat: 'no-repeat',
               };
 
     const images = [
-        './build/assets/LandingPage/HeroPoster.webp',
-        './build/assets/LandingPage/HeroPoster1.webp',
-        './build/assets/LandingPage/HeroPoster2.webp',
-        './build/assets/LandingPage/HeroPoster3.webp',
-        './build/assets/LandingPage/HeroPoster4.webp',
-        './build/assets/LandingPage/HeroPoster5.webp',
+        './assets/LandingPage/HeroPoster.webp',
+        './assets/LandingPage/HeroPoster1.webp',
+        './assets/LandingPage/HeroPoster2.webp',
+        './assets/LandingPage/HeroPoster3.webp',
+        './assets/LandingPage/HeroPoster4.webp',
+        './assets/LandingPage/HeroPoster5.webp',
     ];
 
     const responsive = {
@@ -94,7 +94,7 @@ const Hero = () => {
                         </Link>
                     </div>
                     <div className="gap-2 items-center hidden lg:flex">
-                        <img src="./build/assets/LandingPage/profilMitra.webp" className="w-20" alt="Profil Mitra" />
+                        <img src="./assets/LandingPage/profilMitra.webp" className="w-20" alt="Profil Mitra" />
                         <p className="font-bold text-base">3,8 Juta Nelayan Terhubung dengan Kami</p>
                     </div>
                 </div>

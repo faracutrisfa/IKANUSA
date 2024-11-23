@@ -89,7 +89,7 @@ export default function Login() {
           </GuestLayout>
         </div>
         <div className='w-4/12'>
-          <img src="./build/assets/authPage/HeroLogin.webp" className=' h-screen w-full'/>
+          <img src="./assets/authPage/HeroLogin.webp" className=' h-screen w-full'/>
         </div>
       </div>
     </section>
