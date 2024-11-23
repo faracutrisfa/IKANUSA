@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BuyerAuthController;
 use App\Models\Faq;
+use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,8 +19,17 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/produk', function () {
-    return Inertia::render('Produk');
-})->name('Produk');
+    $products = Product::latest()
+        ->get()
+        ->map(function ($product) {
+            $product->image = asset('images/' . $product->image);
+            return $product;
+        });
+
+    return Inertia::render('Produk', [
+        'products' => $products,  
+    ]);
+})->name('produk');
 
 Route::get('/edukasi', function () {
     return Inertia::render('Edukasi');
