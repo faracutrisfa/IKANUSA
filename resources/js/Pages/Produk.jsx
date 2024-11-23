@@ -1,42 +1,62 @@
 import LandingPageLayout from "@/Layouts/LandingPageLayout";
-import React from "react";
+import React, { useState } from "react";
 import { Head } from "@inertiajs/react";
-import { Card } from "flowbite-react";
-import images from "../../../public/images/1731602382.png";
-import Carousel from "react-multi-carousel";
+import Recommend from "./ProductClient/Recommend";
+import Laut from "./ProductClient/Laut";
+import Tawar from "./ProductClient/Tawar";
+import { CiSearch } from "react-icons/ci";
+import { SlBasketLoaded } from "react-icons/sl";
 
 const Produk = ({ products = [] }) => {
+    const responsive = {
+        superLargeDesktop: { breakpoint: { max: 4000, min: 1024 }, items: 4 },
+        desktop: { breakpoint: { max: 1024, min: 768 }, items: 3 },
+        tablet: { breakpoint: { max: 768, min: 464 }, items: 2 },
+        mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
+    };
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <section>
             <Head title="Produk" />
             <LandingPageLayout>
-                <div className="px-10 lg:px-16 xl:px-24 py-10 lg:py-20">
-                    <h1 className="flex items-center justify-center font-poppins font-bold text-3xl pb-16">
-                        {" "}
-                        Rekomendasi Produk Harga Terbaik dan Terlaris{" "}
-                    </h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        {products.map((product, index) => (
-                            <Card
-                                key={index}
-                                className="max-w-sm"
-                                imgSrc={images}
-                            >
-                                <div className="flex flex-col items-start justify-start gap-y-1">
-                                    <h1 className="font-poppins font-medium text-lg">
-                                        {product.name}
-                                    </h1>
-                                    <h2 className="font-poppins font-medium text-gray-400 text-sm">
-                                        {product.address}
-                                    </h2>
-                                    <p className="font-poppins font-bold text-primary text-md">
-                                        Rp. {product.price.toLocaleString()} /
-                                        Kg
-                                    </p>
-                                </div>
-                            </Card>
-                        ))}
+                <div className="px-10 lg:px-16 xl:px-24 py-10 lg:py-20 flex flex-col justify-center space-y-12 md:space-y-20">
+                    <div className="flex items-center justify-center relative">
+                        <CiSearch
+                            className="absolute right-6 text-white"
+                            size={30}
+                        />
+                        <input
+                            placeholder="Cari disini....."
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            value={searchQuery}
+                            type="text"
+                            className="border focus:border-none focus:outline-none rounded-2xl min-w-full mx-auto p-5 bg-dark-blue-hover text-white placeholder-white font-poppins font-large"
+                        />
                     </div>
+
+                    <h1 className="flex items-center justify-center font-poppins font-bold text-lg lg:text-3xl xl:text-4xl text-dark-blue-active">
+                        Rekomendasi Produk Harga Terbaik dan Terlaris
+                    </h1>
+                    <Recommend
+                        products={filteredProducts}
+                        responsive={responsive}
+                    />
+                    <h1 className="flex items-center justify-start font-poppins font-bold text-lg lg:text-3xl xl:text-4xl text-dark-blue-active pl-4">
+                        Produk Hasil Laut
+                    </h1>
+                    <Laut products={filteredProducts} responsive={responsive} />
+                    <h1 className="flex items-center justify-start font-poppins font-bold text-lg lg:text-3xl xl:text-4xl text-dark-blue-active pl-4">
+                        Produk Ikan Tawar
+                    </h1>
+                    <Tawar
+                        products={filteredProducts}
+                        responsive={responsive}
+                    />
                 </div>
             </LandingPageLayout>
         </section>
