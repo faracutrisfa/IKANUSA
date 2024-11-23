@@ -26,10 +26,10 @@ export default function LoginAdmin({ status, canResetPassword }) {
         <section
             style={{
                 backgroundImage: `
-                url('./build/assets/authPage/BG1.webp'),
-                url('./build/assets/authPage/BG2.webp'),
-                url('./build/assets/authPage/BG3.webp'),
-                url('./build/assets/authPage/BG4.webp'),
+                url('./assets/authPage/BG1.webp'),
+                url('./assets/authPage/BG2.webp'),
+                url('./assets/authPage/BG3.webp'),
+                url('./assets/authPage/BG4.webp'),
                 linear-gradient(#7AB9D4, #123342)
             `,
                 backgroundPosition: `
