@@ -1,82 +1,95 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateFaqRequest;
 use App\Models\Faq;
 
 class FaqController extends Controller
 {
-    public function index() 
+    /**
+     * Menampilkan daftar semua FAQ
+     */
+    public function index()
     {
-       $faq = Faq::latest()->get();
+        $faqs = Faq::with('user')->latest()->get();
 
-       return inertia('Faq/Index', [
-        'faqs' => $faq
+        return inertia('Faq/Index', [
+            'faqs' => $faqs,
         ]);
     }
 
+    /**
+     * Menampilkan halaman untuk membuat FAQ baru
+     */
     public function create()
     {
         return inertia('Faq/Create');
     }
 
+    /**
+     * Menyimpan FAQ baru ke database
+     */
     public function store(Request $request)
     {
+        // Validasi input
         $request->validate([
-            'question' => 'required',
-            'answer' => 'required',
-            'user_id' => 'required'
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string',
         ]);
 
+        // Simpan data FAQ
         Faq::create([
             'question' => $request->input('question'),
             'answer' => $request->input('answer'),
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->id(),
         ]);
 
-        return redirect()->route('faqs.index')->with('success', 'Faq berhasil ditambahkan.');
+        return redirect()->route('faqs.index')->with('success', 'FAQ berhasil ditambahkan.');
     }
 
-    public function show(Faq $faq)
+    /**
+     * Menampilkan halaman untuk mengedit FAQ tertentu
+     */
+    public function edit(Faq $faq)
     {
-        //
-    }
-
-    public function edit($id)
-    {
-        $faq = Faq::findOrFail($id);
-
         return inertia('Faq/Update', [
             'faq' => $faq,
         ]);
     }
 
-    public function update(Request $request, Faq $faq, $id)
+    /**
+     * Memperbarui FAQ yang sudah ada
+     */
+    public function update(Request $request, Faq $faq)
     {
-
-        $faq = Faq::findOrFail($id);
-
+        // Validasi input
         $request->validate([
-            'question' => 'required',
-            'answer' => 'required'
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string',
         ]);
 
+        // Perbarui data FAQ
         $faq->update([
             'question' => $request->input('question'),
             'answer' => $request->input('answer'),
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->id(), // Bisa dihapus jika tidak ingin mengubah pemilik
         ]);
 
-        return redirect()->route('faqs.index')->with('success', 'Faq berhasil diupdate.');
+        return redirect()->route('faqs.index')->with('success', 'FAQ berhasil diperbarui.');
     }
 
-    public function destroy(Faq $faq, $id)
+    /**
+     * Menghapus FAQ dari database
+     */
+    public function destroy(Faq $faq)
     {
-        $faq = Faq::findOrFail($id);
-        $faq->delete();
+        try {
+            $faq->delete();
 
-        return response()->json(['message' => 'Faq berhasil dihapus.']);
-
+            return response()->json(['message' => 'FAQ berhasil dihapus.']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Gagal menghapus FAQ.'], 500);
+        }
     }
 }
