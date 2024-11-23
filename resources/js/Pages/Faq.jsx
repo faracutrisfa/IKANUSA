@@ -35,12 +35,12 @@ const Faq = ({ faqs = [] }) => {
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls={`panel${index}-content`}
                                 id={`panel${index}-header`}
-                                className="font-bold text-base xl:text-xl tracking-widest"
+                                className="font-semibold text-base xl:text-xl tracking-wide"
                             >
                                 <h2>{faq.question}</h2>
                             </AccordionSummary>
                             <AccordionDetails className="px-4 py-2">
-                                <p className="text-sm xl:text-lg tracking-wide">{faq.answer}</p>
+                                <p className="text-sm xl:text-lg tracking-wider">{faq.answer}</p>
                             </AccordionDetails>
                         </Accordion>
                     ))}
