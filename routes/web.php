@@ -7,6 +7,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BuyerAuthController;
+use App\Models\Faq;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,8 +30,12 @@ Route::get('/layanan', function () {
 })->name('Layanan');
 
 Route::get('/faq', function () {
-    return Inertia::render('Faq');
-})->name('Faq');
+    $faqs = Faq::latest()->get();
+
+    return Inertia::render('Faq', [
+        'faqs' => $faqs,
+    ]);
+})->name('faq');
 
 Route::middleware('guest')->group(function () {
     Route::get('loginBuyer', [BuyerAuthController::class, 'showLoginForm'])->name('loginBuyer');
