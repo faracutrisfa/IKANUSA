@@ -6,7 +6,7 @@ const Info = () => {
             <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
                 <h1 className='text-dark-blue-active lg:hidden font-bold text-3xl lg:text-4xl text-center lg:text-left'>Platform Layanan Ikan Terbaik sejak 2020</h1>
                 <div id='grid-1' className='mt-9 lg:mt-0 flex justify-center'>
-                    <img src="./build/assets/LandingPage/infoHero.webp" alt="" className='w-60 lg:w-auto rounded-full lg:rounded-tl-[70px] lg:rounded-br-[70px] lg:rounded-tr-none lg:rounded-bl-none' />
+                    <img src="./assets/LandingPage/infoHero.webp" alt="" className='w-60 lg:w-auto rounded-full lg:rounded-tl-[70px] lg:rounded-br-[70px] lg:rounded-tr-none lg:rounded-bl-none' />
                 </div>
                 <div id='info' className='space-y-4'>
                     <h1 className='hidden lg:block text-dark-blue-active font-bold text-3xl lg:text-4xl text-center lg:text-left'>Platform Layanan Ikan Terbaik sejak 2020</h1>
