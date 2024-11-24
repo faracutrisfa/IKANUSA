@@ -82,7 +82,7 @@ const Hero = () => {
                         IkaNusa menghadirkan ikan-ikan terbaik yang dipilih langsung dari sumber terpercaya, memastikan kamu dan keluarga mendapatkan gizi yang optimal setiap hari. Penuhi kebutuhan protein hewani-mu dengan cara yang mudah dan praktis di IkaNusa, tempat di mana kesegaran dan kualitas selalu menjadi prioritas.
                     </p>
                     <div className="flex gap-2 lg:gap-4">
-                        <Link>
+                        <Link href='/produk'>
                             <PrimaryButton className="bg-[#E2E6DF] border-white lg:border-transparent rounded-xl lg:rounded-lg text-black lg:bg-dark-blue-active lg:text-white">
                                 Beli Sekarang
                             </PrimaryButton>
