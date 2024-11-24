@@ -1,7 +1,6 @@
 import React from "react";
 import { Card } from "flowbite-react";
 import Carousel from "react-multi-carousel";
-import images from "../../../../public/images/1731602382.png";
 import "react-multi-carousel/lib/styles.css";
 
 const Laut = ({ products, responsive }) => {
@@ -24,7 +23,7 @@ const Laut = ({ products, responsive }) => {
                         key={index}
                         className="max-w-sm object-cover"
                         imgAlt={product.name}
-                        imgSrc={images}
+                        imgSrc={product.image}
                     >
                         <div className="flex flex-col items-start justify-start gap-y-1 p-4">
                             <h1 className="font-poppins font-medium text-lg">

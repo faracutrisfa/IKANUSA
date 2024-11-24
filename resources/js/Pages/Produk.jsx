@@ -5,7 +5,7 @@ import Recommend from "./ProductClient/Recommend";
 import Laut from "./ProductClient/Laut";
 import Tawar from "./ProductClient/Tawar";
 import { CiSearch } from "react-icons/ci";
-import { SlBasketLoaded } from "react-icons/sl";
+import { CgShoppingBag } from "react-icons/cg";
 
 const Produk = ({ products = [] }) => {
     const responsive = {
@@ -25,17 +25,24 @@ const Produk = ({ products = [] }) => {
             <Head title="Produk" />
             <LandingPageLayout>
                 <div className="px-10 lg:px-16 xl:px-24 py-10 lg:py-20 flex flex-col justify-center space-y-12 md:space-y-20">
-                    <div className="flex items-center justify-center relative">
-                        <CiSearch
-                            className="absolute right-6 text-white"
-                            size={30}
-                        />
-                        <input
-                            placeholder="Cari disini....."
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            value={searchQuery}
-                            type="text"
-                            className="border focus:border-none focus:outline-none rounded-2xl min-w-full mx-auto p-5 bg-dark-blue-hover text-white placeholder-white font-poppins font-large"
+                    <div className="flex items-center justify-between relative">
+                        <div className="flex items-center w-full relative">
+                            <CiSearch
+                                className="text-white absolute right-6"
+                                size={30}
+                            />
+                            <input
+                                placeholder="Cari disini....."
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                value={searchQuery}
+                                type="text"
+                                className="border focus:border-none focus:outline-none rounded-2xl w-full p-5 bg-dark-blue-hover text-white placeholder-white font-poppins font-large"
+                            />
+                        </div>
+
+                        <CgShoppingBag
+                            className="text-black ml-4 cursor-pointer"
+                            size={35}
                         />
                     </div>
 
