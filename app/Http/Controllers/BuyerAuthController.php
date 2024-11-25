@@ -1,4 +1,4 @@
-<?php
+<?php   
 
 namespace App\Http\Controllers;
 
@@ -12,55 +12,65 @@ class BuyerAuthController extends Controller
 {
     public function showLoginForm()
     {
-        return Inertia::render('Auth/Login'); 
+        return Inertia::render('Auth/Login', [
+            'user' => Auth::guard('buyer')->user(),
+        ]);
     }
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
         $credentials = $request->only('email', 'password');
-    
+
         if (Auth::guard('buyer')->attempt($credentials)) {
             return redirect()->intended('/');
         }
-    
+
         return Inertia::render('Auth/Login', [
-            'errors' => ['message' => 'Invalid credentials'],
+            'errors' => ['message' => 'Invalid credentials provided'],
+            'user' => Auth::guard('buyer')->user(),
         ]);
     }
 
     public function showRegisterForm()
     {
-        return Inertia::render('Auth/Register');
+        return Inertia::render('Auth/Register', [
+            'user' => Auth::guard('buyer')->user(),
+        ]);
     }
 
     public function registerBuyer(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:buyers',
-            'telephone' => 'required|string|max:15', 
-            'address' => 'required|string|max:255', 
+            'telephone' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
             'password' => 'required|string|confirmed|min:8',
         ]);
-    
+
         $buyer = Buyer::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'telephone' => $validated['telephone'], 
-            'address' => $validated['address'], 
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'telephone' => $request->telephone,
+            'address' => $request->address,
         ]);
-    
+
         Auth::guard('buyer')->login($buyer);
-    
-        $buyer->sendEmailVerificationNotification();
-    
+
         return redirect()->route('loginBuyer')->with('status', 'Verification email sent!');
     }
 
     public function showConfirmPasswordForm()
     {
-        return Inertia::render('Auth/ConfirmPassword');
+        return Inertia::render('Auth/ConfirmPassword', [
+            'user' => Auth::guard('buyer')->user(),
+        ]);
     }
 
     public function confirmPassword(Request $request)
@@ -70,10 +80,10 @@ class BuyerAuthController extends Controller
         ]);
 
         if (Hash::check($request->password, Auth::user()->password)) {
-            return redirect()->route('dashboard'); 
+            return redirect()->route('dashboard');
+        }
 
         return back()->withErrors(['password' => 'The provided password is incorrect.']);
-    }
     }
 
     public function logout(Request $request)
@@ -85,7 +95,6 @@ class BuyerAuthController extends Controller
 
         return redirect()->route('home');
     }
-
 
     public function resendVerificationEmail(Request $request)
     {

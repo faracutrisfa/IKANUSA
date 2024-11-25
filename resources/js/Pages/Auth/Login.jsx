@@ -1,98 +1,52 @@
 import { useState } from 'react';
-import { Head, useForm } from '@inertiajs/react';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
-import ApplicationLogo from '@/Components/ApplicationLogo';
+import { Inertia } from '@inertiajs/inertia';
 
-export default function Login() {
-  const [errors, setErrors] = useState([]);
-  const { data, setData, post, processing } = useForm({
-    email: '',
-    password: '',
-  });
+const Login = ({ errors }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    post(route('loginBuyer'), {
-      onError: (errors) => {
-        setErrors(errors);
-      },
-      onSuccess: (response) => {
-        console.log(response);
-        window.location.href = '/';
-      }
-    });
+    Inertia.post('/loginBuyer', { email, password });
   };
 
   return (
-    <section className='font-poppins'>
-      <Head title="Log in" />
-      <div className='flex'>
-        <div className='w-8/12 items-center flex bg-light-blue-active container'>
-          <GuestLayout>
-            <div className='max-w-md'>
-              <ApplicationLogo />
-              <h2 className='text-5xl mt-5 animate-fade-right'>Selamat datang!</h2>
-              <div>
-                {errors.message && (
-                  <div className="mb-4 text-red-500 text-center mt-2">{errors.message}</div>
-                )}
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-semibold text-center">Login</h2>
+        {errors && errors.message && (
+          <div className="text-red-500 text-center mb-4">{errors.message}</div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              id="email"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-                <form onSubmit={handleSubmit}>
-                  <div className="mb-4 mt-5">
-                    <InputLabel htmlFor="email" value="Email" />
-                    <TextInput
-                      id="email"
-                      type="email"
-                      value={data.email}
-                      onChange={(e) => setData('email', e.target.value)}
-                      className="mt-1 block w-full bg-normal-blue-hover"
-                      required
-                    />
-                    {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
-                  </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <input
+              type="password"
+              id="password"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-                  <div className="mb-6">
-                    <InputLabel htmlFor="password" value="Password" />
-                    <TextInput
-                      id="password"
-                      type="password"
-                      value={data.password}
-                      onChange={(e) => setData('password', e.target.value)}
-                      className="mt-1 block w-full bg-normal-blue-hover"
-                      required
-                    />
-                    {errors.password && <p className="text-red-500 text-xs">{errors.password}</p>}
-                  </div>
-
-                  <div className="flex justify-center mb-4">
-                    <PrimaryButton
-                      type="submit"
-                      disabled={processing}
-                      className="py-2 px-9 rounded-lg"
-                    >
-                      {processing ? 'Logging in...' : 'Masuk'}
-                    </PrimaryButton>
-                  </div>
-                </form>
-
-                <div className="mt-4 text-center">
-                  <a href="/registerBuyer" className="text-darker-blue">
-                    Belum punya akun? <span className='font-bold'>Daftar</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </GuestLayout>
-        </div>
-        <div className='w-4/12'>
-          <img src="./assets/authPage/HeroLogin.webp" className=' h-screen w-full'/>
-        </div>
+          <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md">Login</button>
+        </form>
       </div>
-    </section>
-
+    </div>
   );
-}
+};
+
+export default Login;
