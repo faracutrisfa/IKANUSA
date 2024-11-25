@@ -4,12 +4,10 @@ import NavLink from './NavLink';
 import ApplicationLogo from './ApplicationLogo';
 import PrimaryButton from './PrimaryButton';
 import SecondaryButton from './SecondaryButton';
-import { Link, usePage } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import Dropdown from '@/Components/Dropdown';
 
-export default function Navbar() {
-    const user = usePage().props.user
-
+export default function Navbar({ user }) {
     const [activeLink, setActiveLink] = useState('home');
     const [isOpen, setIsOpen] = useState(false);
 
@@ -37,10 +35,6 @@ export default function Navbar() {
                         } z-50 lg:static lg:translate-x-0 lg:h-auto lg:w-auto lg:bg-transparent lg:shadow-none lg:flex lg:items-center`}
                 >
                     <div className="flex flex-col px-10 gap-6 mt-4 lg:flex-row lg:mt-0 xl:gap-24">
-                        <div className="lg:hidden pb-3">
-                            <ApplicationLogo />
-                        </div>
-
                         <NavLink
                             href="/"
                             active={activeLink === 'home'}
@@ -104,10 +98,9 @@ export default function Navbar() {
                                 <span className="inline-flex rounded-md">
                                     <button
                                         type="button"
-                                        className="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
+                                        className="inline-flex items-center rounded-md border-2 border-light-blue-active px-3 py-2 text-sm font-medium leading-4 text-white transition duration-150 ease-in-out hover:bg-light-blue-active hover:text-dark-blue-active focus:outline-none"
                                     >
                                         {user.name}
-
                                         <svg
                                             className="-me-0.5 ms-2 h-4 w-4"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -126,11 +119,6 @@ export default function Navbar() {
 
                             <Dropdown.Content>
                                 <Dropdown.Link
-                                    href={route('profile.edit')}
-                                >
-                                    Profile
-                                </Dropdown.Link>
-                                <Dropdown.Link
                                     href={route('logoutBuyer')}
                                     method="post"
                                     as="button"
@@ -139,9 +127,6 @@ export default function Navbar() {
                                 </Dropdown.Link>
                             </Dropdown.Content>
                         </Dropdown>
-                        // <div className="text-white font-semibold font-poppins">
-                        //     {user.name}
-                        // </div>
                     ) : (
                         <>
                             <Link href="/loginBuyer">
