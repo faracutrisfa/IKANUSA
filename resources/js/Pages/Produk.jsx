@@ -28,7 +28,7 @@ const Produk = ({ products = [] }) => {
                     <div className="flex items-center justify-between relative">
                         <div className="flex items-center w-full relative">
                             <CiSearch
-                                className="text-white absolute right-6"
+                                className="text-white absolute right-2 lg:right-6"
                                 size={30}
                             />
                             <input
@@ -36,7 +36,7 @@ const Produk = ({ products = [] }) => {
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 value={searchQuery}
                                 type="text"
-                                className="border focus:border-none focus:outline-none rounded-2xl w-full p-5 bg-dark-blue-hover text-white placeholder-white font-poppins font-large"
+                                className="border focus:border-none focus:outline-none rounded-2xl w-full p-3 lg:p-5 bg-dark-blue-hover text-white placeholder-white font-poppins font-large"
                             />
                         </div>
 
