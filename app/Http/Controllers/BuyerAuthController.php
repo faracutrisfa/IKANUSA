@@ -17,6 +17,12 @@ class BuyerAuthController extends Controller
         ]);
     }
 
+    public function welcome(){
+        return Inertia::render('Welcome', [
+            'user' => Auth::guard('buyer')->user(),
+        ]);
+    }
+
     public function login(Request $request)
     {
         $request->validate([
