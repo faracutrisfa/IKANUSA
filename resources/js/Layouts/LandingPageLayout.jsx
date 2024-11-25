@@ -2,10 +2,10 @@ import Footer from '@/Components/Footer'
 import Navbar from '@/Components/Navbar'
 import React from 'react'
 
-const LandingPageLayout = ({ children, auth, laravelVersion, phpVersion }) => {
+const LandingPageLayout = ({ children, user }) => {
     return (
         <div className='font-poppins'>
-            <Navbar auth={auth}/>
+            <Navbar user={user}/>
             <div className='pt-[87px]'>
                 {children}
             </div>
