@@ -6,7 +6,7 @@ import PrimaryButton from './PrimaryButton';
 import SecondaryButton from './SecondaryButton';
 import { Link } from '@inertiajs/react';
 
-export default function Navbar() {
+export default function Navbar({ user }) { // Get user from props
     const [activeLink, setActiveLink] = useState('home');
     const [isOpen, setIsOpen] = useState(false);
 
@@ -94,17 +94,25 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <div className="hidden lg:flex gap-4 ">
-                    <Link href="/loginBuyer">
-                        <SecondaryButton className="font-bold bg-transparent text-white hover:bg-normal-blue-active">
-                            Log In
-                        </SecondaryButton>
-                    </Link>
-                    <Link href="/registerBuyer">
-                        <PrimaryButton className="font-bold bg-normal-blue-active hover:bg-transparent hover:border-normal-blue-active">
-                            Gabung
-                        </PrimaryButton>
-                    </Link>
+                <div className="hidden lg:flex gap-4">
+                    {user ? (
+                        <div className="text-white font-bold">
+                            Welcome, {user.name}
+                        </div>
+                    ) : (
+                        <>
+                            <Link href="/loginBuyer">
+                                <SecondaryButton className="font-bold bg-transparent text-white hover:bg-normal-blue-active">
+                                    Log In
+                                </SecondaryButton>
+                            </Link>
+                            <Link href="/registerBuyer">
+                                <PrimaryButton className="font-bold bg-normal-blue-active hover:bg-transparent hover:border-normal-blue-active">
+                                    Gabung
+                                </PrimaryButton>
+                            </Link>
+                        </>
+                    )}
                 </div>
             </div>
         </nav>
