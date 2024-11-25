@@ -50,6 +50,7 @@ Route::middleware('guest')->group(function () {
     Route::post('loginBuyer', [BuyerAuthController::class, 'login']);
     Route::get('registerBuyer', [BuyerAuthController::class, 'showRegisterForm'])->name('registerBuyer');
     Route::post('registerBuyer', [BuyerAuthController::class, 'registerBuyer']);
+    Route::post('/logoutBuyer', [BuyerAuthController::class, 'logout'])->name('logoutBuyer');
 });
 
 // Route dashboard

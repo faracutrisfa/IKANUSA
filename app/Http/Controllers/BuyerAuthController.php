@@ -99,7 +99,7 @@ class BuyerAuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 
     public function resendVerificationEmail(Request $request)
