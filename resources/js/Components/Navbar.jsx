@@ -4,9 +4,11 @@ import NavLink from './NavLink';
 import ApplicationLogo from './ApplicationLogo';
 import PrimaryButton from './PrimaryButton';
 import SecondaryButton from './SecondaryButton';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 
-export default function Navbar({ user }) { // Get user from props
+export default function Navbar() { 
+    const user = usePage().props.user
+
     const [activeLink, setActiveLink] = useState('home');
     const [isOpen, setIsOpen] = useState(false);
 
@@ -96,8 +98,8 @@ export default function Navbar({ user }) { // Get user from props
 
                 <div className="hidden lg:flex gap-4">
                     {user ? (
-                        <div className="text-white font-bold">
-                            Welcome, {user.name}
+                        <div className="text-white font-semibold font-poppins">
+                            {user.name}
                         </div>
                     ) : (
                         <>
