@@ -6,7 +6,7 @@ import Info from './LandingPage/Info';
 import RekomendasiProduk from './LandingPage/RekomendasiProduk';
 import Ulasan from './LandingPage/Ulasan';
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome() {
     return (
         <section>
             <Head title="Welcome" />
