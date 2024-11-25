@@ -49,7 +49,7 @@ const Ulasan = () => {
                                     </h3>
                                     <div className='flex justify-between items-start'>
                                         <img
-                                            src="./build/assets/LandingPage/patternReviewTop.webp"
+                                            src="./assets/LandingPage/patternReviewBottom.webp"
                                             alt=""
                                             className='w-3 lg:w-12'
                                         />
@@ -60,7 +60,7 @@ const Ulasan = () => {
                                     <div className='flex justify-between items-end'>
                                         <div></div>
                                         <img
-                                            src="./build/assets/LandingPage/patternReviewBottom.webp"
+                                            src="./assets/LandingPage/patternReviewTop.webp"
                                             alt=""
                                             className='w-3 lg:w-12'
                                         />
