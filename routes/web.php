@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 //buyers
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-})->name('welcome');
+Route::get('/', [BuyerAuthController::class,'welcome'])->name('welcome');
 
 Route::get('/produk', function () {
     $products = Product::latest()
