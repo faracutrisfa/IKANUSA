@@ -30,7 +30,7 @@ const RekomendasiProduk = () => {
                         Sedang mencari ikan segar dengan harga terbaik? Di IkaNusa, kami punya berbagai pilihan ikan segar dengan kualitas premium yang siap memenuhi kebutuhan dapur Anda.
                     </p>
                     <Link href='/produk'>
-                        <SecondaryButton className='hover:bg-[#2376CF] hover:text-white border-[#2376CF]'>
+                        <SecondaryButton>
                             Cek Selengkapnya
                         </SecondaryButton>
                     </Link>
