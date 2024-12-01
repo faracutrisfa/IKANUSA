@@ -9,13 +9,13 @@ const RekomendasiProduk = () => {
             name: "Ikan Kakap",
             address: "Muara Angke, Jakarta",
             price: 80000,
-            image: "./images/1732454970.jpeg",
+            image: "./images/1733040850.jpeg",
         },
         {
             name: "Ikan Bawal",
             address: "Desa Srono, Banyuwangi",
             price: 45000,
-            image: "./images/1732455507.jpg",
+            image: "./images/1733040372.jpg",
         },
     ];
 
