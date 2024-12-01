@@ -2,9 +2,8 @@ import React from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import reviews from "../../Data/reviews";
 
-const Ulasan = () => {
+const Ulasan = ({ reviews = [] }) => {
     const settings = {
         infinite: true,
         speed: 500,

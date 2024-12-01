@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
+use App\Models\Review;
 
 class BuyerAuthController extends Controller
 {
@@ -17,9 +18,18 @@ class BuyerAuthController extends Controller
         ]);
     }
 
-    public function welcome(){
+    public function welcome()
+    {
+        $reviews = Review::latest()
+            ->get()
+            ->map(function ($review) {
+                $review->image = asset('images/' . $review->image); 
+                return $review;
+            });
+    
         return Inertia::render('Welcome', [
             'user' => Auth::guard('buyer')->user(),
+            'reviews' => $reviews, 
         ]);
     }
 
