@@ -4,10 +4,12 @@ import NavLink from './NavLink';
 import ApplicationLogo from './ApplicationLogo';
 import PrimaryButton from './PrimaryButton';
 import SecondaryButton from './SecondaryButton';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import Dropdown from '@/Components/Dropdown';
 
-export default function Navbar({ user }) {
+export default function Navbar() {
+    const user = usePage().props.user;
+
     const [activeLink, setActiveLink] = useState('home');
     const [isOpen, setIsOpen] = useState(false);
 
