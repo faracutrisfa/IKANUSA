@@ -6,7 +6,7 @@ import Info from './LandingPage/Info';
 import RekomendasiProduk from './LandingPage/RekomendasiProduk';
 import Ulasan from './LandingPage/Ulasan';
 
-export default function Welcome() {
+export default function Welcome({ reviews }) {
     return (
         <section>
             <Head title="Welcome" />
@@ -18,7 +18,7 @@ export default function Welcome() {
                     <Layanan />
                     <Info />
                     <RekomendasiProduk />
-                    <Ulasan />
+                    <Ulasan reviews={reviews} />
                 </div>
             </LandingPageLayout>
         </section>
