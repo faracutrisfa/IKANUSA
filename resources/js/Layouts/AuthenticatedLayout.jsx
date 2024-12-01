@@ -45,6 +45,13 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Tambah FAQ
                                 </NavLink>
+                                <NavLink
+                                    href={route('reviews.index')}
+                                    active={route().current('reviews.index')}
+                                    className='font-medium'
+                                >
+                                    Tambah Review
+                                </NavLink>
                             </div>
                         </div>
 
@@ -160,6 +167,12 @@ export default function AuthenticatedLayout({ header, children }) {
                             active={route().current('faqs.index')}
                         >
                             Tambah Faq
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('reviews.index')}
+                            active={route().current('reviews.index')}
+                        >
+                            Tambah Review
                         </ResponsiveNavLink>
                     </div>
 

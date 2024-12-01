@@ -78,6 +78,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/faqs/edit/{id}', [FaqController::class, 'edit'])->name('faqs.edit');
     Route::put('/faqs/{id}', [FaqController::class, 'update'])->name('faqs.update');
     Route::delete('/faqs/{id}', [FaqController::class, 'destroy'])->name('faqs.destroy');
+
+    //Review routes
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::get('/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/reviews/edit/{id}', [ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::put('/reviews/{id}', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
 
 require __DIR__.'/auth.php';
